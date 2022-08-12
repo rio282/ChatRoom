@@ -1,0 +1,11 @@
+{
+  "name": "chat-room-js",
+  "version": "1.0.0",
+  "description": "Simple chat room, used to send text and files.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Rio Bérénos",
+  "license": "MIT"
+}
