@@ -1,6 +1,7 @@
 import {HomeController} from "./controllers/homeController.js";
 import {NavbarController} from "./controllers/navbarController.js";
 import { RoomController } from "./controllers/roomController.js";
+import {SessionManager} from "./utils/sessionManager.js";
 
 export class App {
     
@@ -10,12 +11,16 @@ export class App {
     static CONTROLLER_HOME = "home";
     static CONTROLLER_ROOM = "room";
 
+    // session manager
+    static sessionManager = new SessionManager();
+
     constructor() {
         console.log("LOAD: App");
+        
         App.loadController(App.CONTROLLER_NAVBAR);
+        App.loadController(App.CONTROLLER_FOOTER);
         App.loadControllerFromUrl(App.CONTROLLER_HOME);
     }
-
 
     static loadController(controllerName, controllerData = {}) {
         console.log(`LOAD CONTROLLER: ${controllerName}`);

@@ -1,3 +1,30 @@
-#content {
-    margin-top: 2em;
+:root {
+    --fg-color-light: black;
+    --bg-color-light: rgba(255, 255, 255, 1);
+    --fg-color-dark: rgba(225, 225, 225, 0.9);
+    --bg-color-dark: #1b1b1b;
 }
+
+* {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    text-rendering: optimizeSpeed;
+    color: var(--fg-color-dark);
+    background-color: var(--bg-color-dark);
+}
+
+#content {
+    margin-top: 2.5em;
+}
+
+#content > h1 {
+    text-align: center;
+}
+
+#dark-theme-switch__label {
+    color: rgba(255,255,255,.55);
+}
+
