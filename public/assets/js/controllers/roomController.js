@@ -1,5 +1,6 @@
 import {Controller} from "./controller.js";
 import {App} from "../app.js";
+import { RequestManager } from "../utils/requestManager.js";
 
 export class RoomController extends Controller {
 
@@ -15,7 +16,10 @@ export class RoomController extends Controller {
     }
 
     async #addSubscribers() {
-
+        this.#view.querySelector("#test-button").addEventListener("click", () => {
+            let rm = new RequestManager();
+            rm.get("");
+        });
     }
     
 }

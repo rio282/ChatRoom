@@ -17,6 +17,7 @@ export class App {
     constructor() {
         console.log("LOAD: App");
         
+        // load defaults
         App.loadController(App.CONTROLLER_NAVBAR);
         App.loadController(App.CONTROLLER_FOOTER);
         App.loadControllerFromUrl(App.CONTROLLER_HOME);

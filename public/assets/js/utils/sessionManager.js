@@ -7,7 +7,7 @@ export class SessionManager {
         try {
             this.#session = JSON.parse(localStorage.getItem("session"));
         } catch (e) {
-            App.print("Failed to parse JSON object from local storage.");
+            console.log("Failed to parse JSON object from local storage.");
         }
 
         // if session doesn't exist, we make a new one

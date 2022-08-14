@@ -7,6 +7,9 @@ const app = express();
 // use frontend when we visit website
 app.use(express.static(path.join(__dirname, "../public")));
 
+// use json reqs
+app.use(express.json());
+
 const routesPath = __dirname + "/routes/";
 fs.readdirSync(routesPath).forEach(file => {
     if (file.endsWith(".js")) {
