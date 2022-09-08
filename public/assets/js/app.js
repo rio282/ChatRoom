@@ -1,6 +1,6 @@
 import {HomeController} from "./controllers/homeController.js";
 import {NavbarController} from "./controllers/navbarController.js";
-import { RoomController } from "./controllers/roomController.js";
+import { RoomsController } from "./controllers/roomsController.js";
 import {SessionManager} from "./utils/sessionManager.js";
 
 export class App {
@@ -9,7 +9,7 @@ export class App {
     static CONTROLLER_NAVBAR = "navbar";
     static CONTROLLER_FOOTER = "footer";
     static CONTROLLER_HOME = "home";
-    static CONTROLLER_ROOM = "room";
+    static CONTROLLER_ROOMS = "rooms";
 
     // session manager
     static sessionManager = new SessionManager();
@@ -40,8 +40,8 @@ export class App {
                 new HomeController();
                 break;
                 
-            case App.CONTROLLER_ROOM:
-                new RoomController();
+            case App.CONTROLLER_ROOMS:
+                new RoomsController();
                 break;
 
             default:
@@ -53,10 +53,8 @@ export class App {
     static loadControllerFromUrl(fallbackController) {
         const currentController = App.getCurrentController();
 
-        if (currentController) {
-            if (!App.loadController(currentController)) {
-                App.loadController(fallbackController);
-            }
+        if (currentController && !App.loadController(currentController)) {
+            App.loadController(fallbackController);
         } else {
             App.loadController(fallbackController);
         }

@@ -20,30 +20,34 @@ export class RequestManager {
             },
         };
 
+        let errorMsg = "";
+        let responseCode = 400;
         try {
             if (Object.entries(data).length != 0) {
-                options.body = JSON.stringify(data);
+                defaultOptions.body = JSON.stringify(data);
             }
 
-            const response = await fetch(url, options);
+            // do request
+            const response = await fetch(url, defaultOptions);
             if (response.ok) // ok response
                 return await response.json();
 
             // if fail
             const jsonErrResponse = await response.json();
-            let errorMsg = response.statusText;
+            errorMsg = response.statusText;
+            responseCode = response.status;
             if ("reason" in jsonErrResponse) {
                 errorMsg = jsonErrResponse.reason;
             }
 
-            return this.#onFailedRequest(response.status, errorMsg);
+            return this.#onFailedRequest(responseCode, errorMsg);
         } catch (e) {
-            return this.#onFailedRequest(-1, errorMsg); // TODO: fix the error code later bruh idc
+            return this.#onFailedRequest(responseCode, e.toString());
         }
     }
 
     #onFailedRequest(code, error) {
         console.error(`(FAIL) [ERROR ${code}] ${error}`);
-        return Promise.reject({code: errorCode, reason: error});
+        return Promise.reject({code: code, reason: error});
     }
 }
